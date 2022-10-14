@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap');
+@import './variables.scss';
+
+@mixin flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+body {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+  font-family: $font;
+  background: $bgColor;
+  background: $bgColorGrad;
+}
+
+.app {
+  @include flex;
+
+  .title {
+    color: transparent;
+    background-image: $titleColor;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 300px 300px;
+    background-position: 0 0;
+    animation: bp 1s infinite linear;
+
+    @keyframes bp {
+      from {
+        background-position-x: 0px;
+      }
+
+      to {
+        background-position-x: 300px;
+      }
+    }
+  }
+
+  .form {
+    @include flex;
+    width: 80%;
+
+    .textarea, .textarea-red {
+      padding: 1%;
+      width: 80%;
+      height: 10vh;
+      font-family: $font;
+      font-size: 1.1rem;
+      color: $taColorText;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 20px;
+      resize: none;
+      transition: .6s;
+    }
+
+    .textarea {
+      outline: 3px solid $taColor;
+      caret-color: $taColor;
+    }
+
+    .textarea-red {
+      outline: 3px solid $textareaRed;
+      caret-color: $textareaRed;
+    }
+
+    .send {
+      padding: 1% 3%;
+      color: $btnColor;
+      font-family: $font;
+      font-weight: 700;
+      border: none;
+      background-color: transparent;
+      transition: .7s;
+      cursor: pointer;
+
+      &:hover {
+        border: none;
+        background-color: $btnBgHover;
+        transition: .7s;
+      }
+    }
+  }
+
+  .comments {
+    width: 50vw;
+    color: $commentsColor;
+
+    // >p:first-child {
+    //   border: transparent;
+    //   background: $bgColorGrad;
+    //   box-shadow: 5px 5px 10px 1px $commentShadow;
+    // }
+
+    .comment, .comment-first {
+      padding: 5px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border: transparent;
+      border-radius: 20px;
+      box-shadow: 5px 5px 10px 1px $commentShadow;
+      transition: .3s;
+    }
+
+    .comment-first {
+      margin: 20px 0;
+      background: $bgColorGrad;
+      scale: (1.1);
+
+      .comment-date {
+        font-size: .7rem;
+      }
+    }
+
+    .comment {
+      margin: 10px 0;
+      background: transparent;
+
+      &:hover {
+        scale: (1.1);
+        transition: .3s;
+      }
+
+      .comment-date {
+        font-size: .6rem;
+      }
+    }
+  }
+}
